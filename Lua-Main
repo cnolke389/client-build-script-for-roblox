@@ -1,0 +1,341 @@
+ --Converted with ttyyuu12345's model to script plugin v4 go follow him
+function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(self,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+cors = {}
+mas = Instance.new("Model",game:GetService("Lighting"))
+ScreenGui0 = Instance.new("ScreenGui")
+Frame1 = Instance.new("Frame")
+LocalScript2 = Instance.new("LocalScript")
+TextButton3 = Instance.new("TextButton")
+LocalScript4 = Instance.new("LocalScript")
+TextButton5 = Instance.new("TextButton")
+LocalScript6 = Instance.new("LocalScript")
+TextButton7 = Instance.new("TextButton")
+LocalScript8 = Instance.new("LocalScript")
+TextButton9 = Instance.new("TextButton")
+LocalScript10 = Instance.new("LocalScript")
+Frame11 = Instance.new("Frame")
+TextLabel12 = Instance.new("TextLabel")
+LocalScript13 = Instance.new("LocalScript")
+TextLabel14 = Instance.new("TextLabel")
+ScreenGui0.Parent = mas
+ScreenGui0.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Frame1.Parent = ScreenGui0
+Frame1.Position = UDim2.new(0.124816462, 0, 0.258955956, 0)
+Frame1.Size = UDim2.new(0, 360, 0, 440)
+Frame1.BackgroundColor = BrickColor.new("Dark taupe")
+Frame1.BackgroundColor3 = Color3.new(0.266667, 0.266667, 0.266667)
+Frame1.BorderSizePixel = 4
+LocalScript2.Parent = Frame1
+table.insert(cors,sandbox(LocalScript2,function()
+local UIS = game:GetService('UserInputService')
+
+local frame = script.Parent
+
+
+
+local dragToggle = nil
+
+local dragSpeed = 0.25
+
+local dragStart = nil
+
+local startPos = nil
+
+
+
+local function updateInput(input)
+
+	local delta = input.Position - dragStart
+
+	local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+
+		startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+
+	game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+
+end
+
+
+
+frame.InputBegan:Connect(function(input)
+
+	if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+
+		dragToggle = true
+
+		dragStart = input.Position
+
+		startPos = frame.Position
+
+		input.Changed:Connect(function()
+
+			if input.UserInputState == Enum.UserInputState.End then
+
+				dragToggle = false
+
+			end
+
+		end)
+
+	end
+
+end)
+
+
+
+UIS.InputChanged:Connect(function(input)
+
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+
+		if dragToggle then
+
+			updateInput(input)
+
+		end
+
+	end
+
+end)
+
+end))
+TextButton3.Name = "Ball"
+TextButton3.Parent = Frame1
+TextButton3.Position = UDim2.new(0.225726575, 0, 0.10228847, 0)
+TextButton3.Size = UDim2.new(0, 200, 0, 57)
+TextButton3.BackgroundColor = BrickColor.new("Light grey metallic")
+TextButton3.BackgroundColor3 = Color3.new(0.690196, 0.690196, 0.690196)
+TextButton3.Font = Enum.Font.Fondamento
+TextButton3.FontSize = Enum.FontSize.Size14
+TextButton3.Text = "Ball"
+TextButton3.TextColor = BrickColor.new("Really black")
+TextButton3.TextColor3 = Color3.new(0, 0, 0)
+TextButton3.TextScaled = true
+TextButton3.TextSize = 14
+TextButton3.TextWrap = true
+TextButton3.TextWrapped = true
+LocalScript4.Parent = TextButton3
+table.insert(cors,sandbox(LocalScript4,function()
+script.Parent.MouseButton1Click:Connect(function()
+	local part = Instance.new("Part")
+	part.Name = "headPart"
+	part.Anchored = true
+	part.Shape = Enum.PartType.Ball
+	part.Orientation = game.Players.LocalPlayer.Character.Head.Orientation
+	part.Color = Color3.new(1, 1, 1)
+	part.Parent = workspace -- Put the part into the Workspace
+	part.Position = game.Players.LocalPlayer.Character.Head.Position + Vector3.new(0,2,0)
+end)
+
+end))
+TextButton5.Name = "cube"
+TextButton5.Parent = Frame1
+TextButton5.Position = UDim2.new(0.222948804, 0, 0.297743022, 0)
+TextButton5.Size = UDim2.new(0, 200, 0, 57)
+TextButton5.BackgroundColor = BrickColor.new("Light grey metallic")
+TextButton5.BackgroundColor3 = Color3.new(0.690196, 0.690196, 0.690196)
+TextButton5.Font = Enum.Font.Fondamento
+TextButton5.FontSize = Enum.FontSize.Size14
+TextButton5.Text = "Cube"
+TextButton5.TextColor = BrickColor.new("Really black")
+TextButton5.TextColor3 = Color3.new(0, 0, 0)
+TextButton5.TextScaled = true
+TextButton5.TextSize = 14
+TextButton5.TextWrap = true
+TextButton5.TextWrapped = true
+LocalScript6.Parent = TextButton5
+table.insert(cors,sandbox(LocalScript6,function()
+script.Parent.MouseButton1Click:Connect(function()
+	local part = Instance.new("Part")
+	part.Name = "headPart"
+	part.Anchored = true
+	part.Size = Vector3.new(4,4,4)
+	part.Orientation = game.Players.LocalPlayer.Character.Head.Orientation + Vector3.new(0,90,0)
+	part.Color = Color3.new(1, 1, 1)
+	part.Parent = workspace -- Put the part into the Workspace
+	part.Position = game.Players.LocalPlayer.Character.Head.Position + Vector3.new(0,2,0)
+end)
+
+end))
+TextButton7.Name = "Cylindor"
+TextButton7.Parent = Frame1
+TextButton7.Position = UDim2.new(0.222948804, 0, 0.509106696, 0)
+TextButton7.Size = UDim2.new(0, 200, 0, 57)
+TextButton7.BackgroundColor = BrickColor.new("Light grey metallic")
+TextButton7.BackgroundColor3 = Color3.new(0.690196, 0.690196, 0.690196)
+TextButton7.Font = Enum.Font.Fondamento
+TextButton7.FontSize = Enum.FontSize.Size14
+TextButton7.Text = "Cylinder"
+TextButton7.TextColor = BrickColor.new("Really black")
+TextButton7.TextColor3 = Color3.new(0, 0, 0)
+TextButton7.TextScaled = true
+TextButton7.TextSize = 14
+TextButton7.TextWrap = true
+TextButton7.TextWrapped = true
+LocalScript8.Parent = TextButton7
+table.insert(cors,sandbox(LocalScript8,function()
+script.Parent.MouseButton1Click:Connect(function()
+	local part = Instance.new("Part")
+	part.Name = "headPart"
+	part.Anchored = true
+	part.Shape = Enum.PartType.Cylinder
+	part.Orientation = game.Players.LocalPlayer.Character.Head.Orientation
+	part.Size = Vector3.new(4,4,4)
+	part.Color = Color3.new(1, 1, 1)
+	part.Parent = workspace -- Put the part into the Workspace
+	part.Position = game.Players.LocalPlayer.Character.Head.Position + Vector3.new(0,2,0)
+end)
+
+end))
+TextButton9.Name = "Credits"
+TextButton9.Parent = Frame1
+TextButton9.Position = UDim2.new(0.222948804, 0, 0.718197584, 0)
+TextButton9.Size = UDim2.new(0, 200, 0, 57)
+TextButton9.BackgroundColor = BrickColor.new("Light grey metallic")
+TextButton9.BackgroundColor3 = Color3.new(0.690196, 0.690196, 0.690196)
+TextButton9.Font = Enum.Font.Fondamento
+TextButton9.FontSize = Enum.FontSize.Size14
+TextButton9.Text = "Credits"
+TextButton9.TextColor = BrickColor.new("Really black")
+TextButton9.TextColor3 = Color3.new(0, 0, 0)
+TextButton9.TextScaled = true
+TextButton9.TextSize = 14
+TextButton9.TextWrap = true
+TextButton9.TextWrapped = true
+LocalScript10.Name = "cscript"
+LocalScript10.Parent = TextButton9
+table.insert(cors,sandbox(LocalScript10,function()
+script.Parent.MouseButton1Click:Connect(function()
+	script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
+end)
+
+end))
+Frame11.Parent = Frame1
+Frame11.Position = UDim2.new(0.912839353, 0, 0.193140566, 0)
+Frame11.Visible = false
+Frame11.Size = UDim2.new(0, 390, 0, 217)
+Frame11.BackgroundColor = BrickColor.new("Black")
+Frame11.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+TextLabel12.Parent = Frame11
+TextLabel12.Position = UDim2.new(0.107692316, 0, 0.244239643, 0)
+TextLabel12.Size = UDim2.new(0, 306, 0, 110)
+TextLabel12.BackgroundColor = BrickColor.new("Dark stone grey")
+TextLabel12.BackgroundColor3 = Color3.new(0.368627, 0.368627, 0.368627)
+TextLabel12.Font = Enum.Font.Garamond
+TextLabel12.FontSize = Enum.FontSize.Size14
+TextLabel12.Text = "Cnolke389 - whole thing"
+TextLabel12.TextColor = BrickColor.new("Really black")
+TextLabel12.TextColor3 = Color3.new(0, 0, 0)
+TextLabel12.TextScaled = true
+TextLabel12.TextSize = 14
+TextLabel12.TextWrap = true
+TextLabel12.TextWrapped = true
+LocalScript13.Parent = Frame11
+table.insert(cors,sandbox(LocalScript13,function()
+local UIS = game:GetService('UserInputService')
+
+local frame = script.Parent
+
+
+
+local dragToggle = nil
+
+local dragSpeed = 0.25
+
+local dragStart = nil
+
+local startPos = nil
+
+
+
+local function updateInput(input)
+
+	local delta = input.Position - dragStart
+
+	local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+
+		startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+
+	game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+
+end
+
+
+
+frame.InputBegan:Connect(function(input)
+
+	if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+
+		dragToggle = true
+
+		dragStart = input.Position
+
+		startPos = frame.Position
+
+		input.Changed:Connect(function()
+
+			if input.UserInputState == Enum.UserInputState.End then
+
+				dragToggle = false
+
+			end
+
+		end)
+
+	end
+
+end)
+
+
+
+UIS.InputChanged:Connect(function(input)
+
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+
+		if dragToggle then
+
+			updateInput(input)
+
+		end
+
+	end
+
+end)
+
+end))
+TextLabel14.Parent = Frame1
+TextLabel14.Position = UDim2.new(0.0510055572, 0, 0.0148219764, 0)
+TextLabel14.Size = UDim2.new(0, 261, 0, 30)
+TextLabel14.BackgroundColor = BrickColor.new("Institutional white")
+TextLabel14.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel14.Font = Enum.Font.DenkOne
+TextLabel14.FontSize = Enum.FontSize.Size14
+TextLabel14.Text = "Cnolke389s Client build script"
+TextLabel14.TextColor = BrickColor.new("Really black")
+TextLabel14.TextColor3 = Color3.new(0, 0, 0)
+TextLabel14.TextScaled = true
+TextLabel14.TextSize = 14
+TextLabel14.TextWrap = true
+TextLabel14.TextWrapped = true
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = game:GetService("Players").LocalPlayer.PlayerGui
+	pcall(function() v:MakeJoints() end)
+end
+mas:Destroy()
+for i,v in pairs(cors) do
+	spawn(function()
+		pcall(v)
+	end)
+end 
